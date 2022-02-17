@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.banxian.myblog.mapper.BlogTypeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.banxian.myblog.domain.BlogType">
+        <id column="id" property="id" />
+        <result column="type_name" property="typeName" />
+        <result column="detail" property="detail" />
+        <result column="deleted" property="deleted" />
+        <result column="valid" property="valid" />
+        <result column="create_at" property="createAt" />
+        <result column="update_at" property="updateAt" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, type_name, detail, deleted, valid, create_at, update_at
+    </sql>
+
+
+    <select id="selectByMe">
+        select * from blog_type
+    </select>
+</mapper>

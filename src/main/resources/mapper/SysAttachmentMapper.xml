@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.banxian.myblog.mapper.SysAttachmentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.banxian.myblog.domain.SysAttachment">
+        <id column="id" property="id" />
+        <result column="business_id" property="businessId" />
+        <result column="business_type" property="businessType" />
+        <result column="file_name" property="fileName" />
+        <result column="file_type" property="fileType" />
+        <result column="file_size" property="fileSize" />
+        <result column="file_path" property="filePath" />
+        <result column="file_hash" property="fileHash" />
+        <result column="width" property="width" />
+        <result column="height" property="height" />
+<!--        <result column="files" property="files" />-->
+        <result column="file64" property="file64" />
+        <result column="deleted" property="deleted" />
+        <result column="create_at" property="createAt" />
+        <result column="update_at" property="updateAt" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, business_id, business_type, file_name, file_type, file_size, file_path, file_hash, width, height, files, file64, deleted, create_at, update_at
+    </sql>
+
+
+    <select id="selectByMe">
+        select * from sys_attachment
+    </select>
+</mapper>

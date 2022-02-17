@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.banxian.myblog.mapper.AdminMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.banxian.myblog.domain.Admin">
+        <id column="id" property="id" />
+        <result column="admin_name" property="adminName" />
+        <result column="nickname" property="nickname" />
+        <result column="password" property="password" />
+        <result column="status" property="status" />
+        <result column="deleted" property="deleted" />
+        <result column="avatar" property="avatar" />
+        <result column="create_at" property="createAt" />
+        <result column="update_at" property="updateAt" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, admin_name, nickname, password, status, deleted, avatar, create_at, update_at
+    </sql>
+
+
+    <select id="selectByMe">
+        select * from admin
+    </select>
+</mapper>
