@@ -1,6 +1,7 @@
 package com.banxian.myblog.support.helper;
 
 import com.banxian.myblog.common.util.SpringUtil;
+import com.banxian.myblog.constant.CommonConsts;
 import com.banxian.myblog.domain.TokenRecord;
 import com.banxian.myblog.service.impl.TokenRecordServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -30,7 +31,7 @@ public class TokenHelper {
     public static boolean checkTokenValid(String token) {
         QueryWrapper<TokenRecord> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("token", token);
-        queryWrapper.eq("valid", "1");
+        queryWrapper.eq("valid", CommonConsts.YES);
         TokenRecord tokenRecord = tokenRecordService.getOne(queryWrapper);
         if (tokenRecord == null) {
             return false;
@@ -41,7 +42,7 @@ public class TokenHelper {
 
     public static void invalidToken() {
         TokenRecord tokenRecord = get();
-        tokenRecord.setValid("0");
+        tokenRecord.setValid(CommonConsts.NO);
         tokenRecordService.updateById(tokenRecord);
     }
 }

@@ -22,7 +22,7 @@ public class SHAUtil {
     }
 
     public static String SHA256(final String encryptText, String salt) {
-        return SHA(encryptText+salt, ENCRYPT_TYPE_256);
+        return SHA(encryptText + salt, ENCRYPT_TYPE_256);
     }
 
     /**
@@ -74,7 +74,7 @@ public class SHAUtil {
     }
 
     public static void main(String[] args) {
-        System.out.println(SHA256("tudou","ban9527xian,,"));
+        System.out.println(SHA256("tudou", "ban9527xian,,"));
         System.out.println(SHA512("12345@abcde"));
     }
 }

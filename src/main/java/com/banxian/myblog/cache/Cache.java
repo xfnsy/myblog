@@ -1,4 +1,4 @@
-package com.banxian.myblog.common.cache;
+package com.banxian.myblog.cache;
 
 /**
  * 缓存接口

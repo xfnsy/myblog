@@ -1,5 +1,7 @@
 package com.banxian.myblog.domain;
+import com.banxian.myblog.mybatis.typehandler.SecretFieldTypeHandler;
 import com.baomidou.mybatisplus.annotation.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
@@ -13,6 +15,8 @@ import java.io.Serializable;
  * @author wangpeng
  * @since 2022-01-14
  */
+@Data
+@TableName(autoResultMap = true)
 public class BlogType implements Serializable {
 
     private static final long serialVersionUID = 4344848828462926573L;
@@ -53,66 +57,6 @@ public class BlogType implements Serializable {
     @TableField(value = "update_at", fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateAt;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    public String getTypeName() {
-        return typeName;
-    }
-
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
-    }
-    public String getDetail() {
-        return detail;
-    }
-
-    public void setDetail(String detail) {
-        this.detail = detail;
-    }
-    public String getDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(String deleted) {
-        this.deleted = deleted;
-    }
-    public String getValid() {
-        return valid;
-    }
-
-    public void setValid(String valid) {
-        this.valid = valid;
-    }
-    public LocalDateTime getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(LocalDateTime createAt) {
-        this.createAt = createAt;
-    }
-    public LocalDateTime getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(LocalDateTime updateAt) {
-        this.updateAt = updateAt;
-    }
-
-    @Override
-    public String toString() {
-        return "BlogType{" +
-            "id=" + id +
-            ", typeName=" + typeName +
-            ", detail=" + detail +
-            ", deleted=" + deleted +
-            ", valid=" + valid +
-            ", createAt=" + createAt +
-            ", updateAt=" + updateAt +
-        "}";
-    }
+    @TableField(value = "sfz", typeHandler = SecretFieldTypeHandler.class)
+    private String sfz;
 }

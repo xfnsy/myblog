@@ -19,8 +19,11 @@ public class JsonView {
     // 失败码
     public static final int ERROR = 1;
 
-    // token失效
-    public static final int TOKEN_INVALID = 2;
+    // token失效,需要通过refreshToken去刷新token
+    public static final int TOKEN_INVALID = 1001;
+
+    // refreshToken失效,表示需要去登录
+    public static final int REFRESHTOKEN_INVALID = 1002;
 
 
     // 返回码
@@ -33,7 +36,7 @@ public class JsonView {
 
     // 返回数据
 //    @ApiModelProperty("返回数据")
-    private Map<String, Object> data = new HashMap<>(3);
+    private Map<String, Object> data = new HashMap<>(8);
 
 
     public JsonView() {
@@ -62,15 +65,19 @@ public class JsonView {
         jv.setMsg(returnMsg);
         return jv;
     }
+
     public static JsonView sucAdd() {
-      return suc("新增成功");
+        return suc("新增成功");
     }
+
     public static JsonView sucUpdate() {
         return suc("修改成功");
     }
+
     public static JsonView sucDel() {
         return suc("删除成功");
     }
+
     public static JsonView suc() {
         JsonView jv = new JsonView();
         jv.setCode(SUCCESS);

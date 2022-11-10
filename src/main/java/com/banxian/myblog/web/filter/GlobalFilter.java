@@ -31,7 +31,7 @@ public class GlobalFilter implements Filter {
         // 1. * 对于不需具备凭证（credentials）的请求，服务器会以“*”作为通配符，从而允许所有域都具有访问资源的权限
         // 2. https://developer.mozilla.org 指定域，此时必须在Vary响应头中包含次Origin,代表为不同的 Origin 缓存不同的资源 ;
         // 注意：当响应的是附带身份凭证的请求时，也就是前端设置req.withCredentials = true，此时服务端必须明确 Access-Control-Allow-Origin|HEADERS|METHODS 的值，而不能使用通配符“*”。
-        response.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "http://localhost:9528");
+        response.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
 //        response.setHeader(HttpHeaders.VARY, "Origin");
         // 允许的请求头
         response.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, "Content-Type, Content-Disposition, Authorization");

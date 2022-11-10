@@ -1,6 +1,6 @@
 package com.banxian.myblog.common.util;
 
-import com.banxian.myblog.common.base.Constants;
+import com.banxian.myblog.constant.EncryptConsts;
 
 /**
  * 密码工具类
@@ -8,7 +8,7 @@ import com.banxian.myblog.common.base.Constants;
 public class PasswordUtil {
 
     public static String encrypt(String password){
-        return SHAUtil.SHA256(password, Constants.SHA256_SALT);
+        return SHAUtil.SHA256(password, EncryptConsts.SHA256_SALT);
     }
 
 }

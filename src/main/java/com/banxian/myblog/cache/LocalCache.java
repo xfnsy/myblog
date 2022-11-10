@@ -1,4 +1,4 @@
-package com.banxian.myblog.common.cache;
+package com.banxian.myblog.cache;
 
 import com.banxian.myblog.common.util.DateUtil;
 
@@ -152,7 +152,7 @@ public class LocalCache {
                     }
                 });
                 if (sbf.length() > 0) {
-                    System.out.println("ScheduledClear >>>清理了" + sbf.toString());
+                    System.out.println("ScheduledClear >>>清理了" + sbf);
                 }
 //                System.out.println("ScheduledClear >>>清理结束...");
             }

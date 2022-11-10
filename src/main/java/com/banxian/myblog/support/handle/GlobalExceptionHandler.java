@@ -1,11 +1,13 @@
 package com.banxian.myblog.support.handle;
 
 import com.banxian.myblog.exception.BusinessException;
-import com.banxian.myblog.exception.TokenException;
+import com.banxian.myblog.exception.RefreshTokenInvalidException;
+import com.banxian.myblog.exception.TokenInvalidException;
 import com.banxian.myblog.exception.UndefinedException;
 import com.banxian.myblog.web.view.JsonView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Controller层全局异常处理
@@ -35,9 +38,11 @@ public class GlobalExceptionHandler {
             if (ex instanceof BusinessException) {
                 return JsonView.fail(ex.getMessage());
                 // 2。token校验异常,失效或无效
-            } else if (ex instanceof TokenException) {
+            } else if (ex instanceof TokenInvalidException) {
                 return JsonView.fail(JsonView.TOKEN_INVALID, ex.getMessage());
                 // 3.未定义的系统异常
+            } else if (ex instanceof RefreshTokenInvalidException) {
+                return JsonView.fail(JsonView.REFRESHTOKEN_INVALID, ex.getMessage());
             } else if (ex instanceof UndefinedException) {
                 return JsonView.fail(ex.getMessage());
                 // 4.参数校验失败异常,提取其中的提示信息
@@ -45,9 +50,8 @@ public class GlobalExceptionHandler {
                 BindingResult bindingResult = ((MethodArgumentNotValidException) ex).getBindingResult();
                 // 可能有多个参数校验失败
                 List<ObjectError> allErrors = bindingResult.getAllErrors();
-                StringBuffer sbf = new StringBuffer("参数校验失败:");
-                allErrors.forEach(e -> sbf.append(e.getDefaultMessage()).append(";"));
-                return JsonView.fail(sbf.deleteCharAt(sbf.length() - 1).toString());
+                String errors = allErrors.stream().map(DefaultMessageSourceResolvable::getDefaultMessage).collect(Collectors.joining());
+                return JsonView.fail("参数校验失败：" + errors);
             }
         } catch (Exception e) {
             // 统一在下面处理

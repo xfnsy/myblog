@@ -15,7 +15,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, type_name, detail, deleted, valid, create_at, update_at
+        id, type_name, detail, deleted, valid, create_at, update_at,sfz
     </sql>
 
 

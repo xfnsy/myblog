@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 //@Component
 public class DemoTask {
         private static final Logger logger= LoggerFactory.getLogger(DemoTask.class);
+
     @Scheduled(cron = "0/3 * * * * ?")
     public void demo1(){
         try {

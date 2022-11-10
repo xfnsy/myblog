@@ -60,9 +60,6 @@ public class RandomPwdUtil {
 
     /**
      * 生成简单密码
-     *
-     * @param random
-     * @return
      */
     private static char nextSimpleChar(Random random) {
         switch (random.nextInt(flag == 0 ? 2 : 4)) {

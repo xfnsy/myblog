@@ -191,11 +191,12 @@ public class DateUtil {
         P2("yyyy-MM-dd"),
         P3("yyyy/MM/dd"),
         P4("yyyy MM dd"),
-        P5("yyyyMMdd");
-        public String name;
+        P5("yyyyMMdd"),
+        P6("yyyy.MM.dd");
+        public final String name;
 
-        Pattern(String value) {
-            this.name = value;
+        Pattern(String name) {
+            this.name = name;
         }
     }
 

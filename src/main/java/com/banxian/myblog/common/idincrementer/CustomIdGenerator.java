@@ -1,6 +1,6 @@
 package com.banxian.myblog.common.idincrementer;
 
-import com.banxian.myblog.common.cache.LocalCache;
+import com.banxian.myblog.cache.LocalCache;
 import com.banxian.myblog.common.util.CaseUtil;
 import com.baomidou.mybatisplus.core.incrementer.IdentifierGenerator;
 

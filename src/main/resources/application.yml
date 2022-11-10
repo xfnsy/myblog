@@ -14,13 +14,19 @@ spring:
 #    password: test
     driver-class-name: com.mysql.jdbc.Driver
 #    #我的服务器
-#    url: jdbc:mysql://120.53.225.140:3306/myblog?useUnicode=truecharacterEncoding=UTF-8&useSSL=false
-#    username: root
-#    password: tudou
-      #本地
-    url: jdbc:mysql://192.168.13.128:3306/myblog?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://120.53.225.140:3306/myblog?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root
-    password: root
+    password: tudou
+      #本地
+    hikari:
+      minimum-idle: 4
+      maximum-pool-size: 4
+      max-lifetime: 360000
+
+
+  #    url: jdbc:mysql://192.168.13.128:3306/myblog?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+#    username: root
+#    password: root
   # 模板
   thymeleaf:
     encoding: utf-8
@@ -41,3 +47,5 @@ mybatis-plus:
   mapper-locations: "classpath*:/mapper/**/*.xml"
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-handlers-package: com.banxian.myblog.mybatis.typehandler
+  type-aliases-package: com.banxian.myblog.mybatis.alias

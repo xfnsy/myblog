@@ -11,6 +11,13 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+
+/**
+ * okhttp工具类
+ *
+ * @author wangpeng
+ * @since 2022-8-4 11:46:10
+ */
 public class OkHttpUtil {
 
     private static final Logger log = LoggerFactory.getLogger(OkHttpUtil.class);
@@ -39,7 +46,7 @@ public class OkHttpUtil {
         params.put("name", "123");
 //        System.out.println(get(url, params, headers));
         File file = new File("D:/xiaomao.jpg");
-        System.out.println(upload(url, "smfile",file, headers));
+        System.out.println(upload(url, "smfile", file, headers));
     }
 
     /**
@@ -51,12 +58,12 @@ public class OkHttpUtil {
         return sync(request);
     }
 
-    public static void get(String url, Map<String, String> params) {
-        get(url, params, null);
+    public static String get(String url, Map<String, String> params) {
+        return get(url, params, null);
     }
 
-    public static void get(String url) {
-        get(url, null, null);
+    public static String get(String url) {
+        return get(url, null, null);
     }
 
 
@@ -69,23 +76,23 @@ public class OkHttpUtil {
         return sync(request);
     }
 
-    public static void post(String url, Map<String, String> params) {
-        post(url, params, null);
+    public static String post(String url, Map<String, String> params) {
+        return post(url, params, null);
     }
 
-    public static void post(String url) {
-        post(url, null, null);
+    public static String post(String url) {
+        return post(url, null, null);
     }
 
 
-    public static String upload(String url, String paraName,File file, Map<String, String> headers) {
+    public static String upload(String url, String paraName, File file, Map<String, String> headers) {
         log.info("POST-FILE请求，url:{}, file:{},headers:{}", url, file.getName(), headers);
-        Request request = buildPostFileRequest(url, paraName,file, headers);
+        Request request = buildPostFileRequest(url, paraName, file, headers);
         return sync(request);
     }
 
-    public static void upload(String url, String paraName,File file) {
-        upload(url,paraName, file, null);
+    public static String upload(String url, String paraName, File file) {
+        return upload(url, paraName, file, null);
     }
 
 
@@ -95,8 +102,8 @@ public class OkHttpUtil {
         return sync(request);
     }
 
-    public static void postJson(String url, String jsonBody) {
-        postJson(url, jsonBody, null);
+    public static String postJson(String url, String jsonBody) {
+        return postJson(url, jsonBody, null);
     }
 
     /**

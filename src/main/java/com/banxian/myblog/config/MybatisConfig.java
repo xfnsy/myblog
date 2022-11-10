@@ -1,6 +1,6 @@
 package com.banxian.myblog.config;
 
-import com.banxian.myblog.common.cache.LocalCache;
+import com.banxian.myblog.cache.LocalCache;
 import com.banxian.myblog.common.idincrementer.CustomIdGenerator;
 import com.banxian.myblog.mapper.CommonMapper;
 import com.banxian.myblog.support.handle.GlobalMetaObjectHandler;
@@ -19,7 +19,8 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Created by wangpeng on 2020/12/9.
+ * @author  wangpeng
+ * @since 2022-8-8 16:54:40
  */
 @Configuration
 public class MybatisConfig {
